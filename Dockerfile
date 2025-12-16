@@ -30,6 +30,7 @@ RUN apt update && \
 
 ADD entrypoint.sh /entrypoint.sh
 COPY --from=builder /tt-rss /tt-rss
+RUN cp /tt-rss/config.php-dist /tt-rss/config.php
 
 RUN chmod -R 777 /tt-rss/cache /tt-rss/feed-icons /tt-rss/lock \
     && useradd -r ttrss \
